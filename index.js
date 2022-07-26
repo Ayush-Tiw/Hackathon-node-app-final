@@ -8,12 +8,12 @@ import jwt from "jsonwebtoken"
 
 dotenv.config();
 export const app = express();
-
-const PORT = process.env.PORT;
+console.log(process.env.PORT)
+const PORT =process.env.PORT
 
 app.use(express.json());
 
-const mongo_URL = process.env.mongo_URL;
+const mongo_URL = process.env.MONGO_URL;
 
 // function to connect to mongodb
 async function createConnection() {
