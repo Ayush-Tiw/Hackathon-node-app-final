@@ -1,0 +1,76 @@
+
+const foodList=[
+    
+    {
+        name:"Burger",
+        image:"https://paisley.is/wp-content/uploads/2018/05/Burgers.jpg",
+        price:"110",
+        summary:"John berry's delicious burger stuffed with blueberries,toped with bacon,cheddar cheese,fried egg,maple glaze,and raspberry musturd sauce"
+    },
+    {
+        name:"HOT DOG",
+        image:"https://static.fanpage.it/wp-content/uploads/sites/22/2020/01/hotdog.jpg",
+        price:"80",
+        summary:"Nathan's world famous all beef Hot dog,chopped onion and tomatoes,pickles,relish,sport pepper,yellow musturd,selery salt,includes potato chips",
+    },
+    {
+        name:"Pizza",
+        image:"https://th.bing.com/th/id/R.5ff9c57dcd7405f38eda737bc5be9e1c?rik=mTQ%2ff61ou%2bKfmA&riu=http%3a%2f%2fwww.wallpaperup.com%2fuploads%2fwallpapers%2f2015%2f04%2f11%2f659101%2f5ff9c57dcd7405f38eda737bc5be9e1c.jpg&ehk=VJlvinFd1DVy3g53p5BuOjf2Nk2ewnvWL1cQ78Ga9uQ%3d&risl=&pid=ImgRaw&r=0",
+        price:"230",
+        summary:" Pizza Margherita (more commonly known in English as Margherita pizza) is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella cheese, fresh basil, salt, and extra-virgin olive oil",
+    },
+    {
+        name:"Donut",
+        image:"https://th.bing.com/th/id/R.d42c7b37443c847a000f29c182d9c9e3?rik=GZLBXf8bS0w9NQ&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f6%2fa%2f0%2f773309-beautiful-donuts-wallpapers-2254x1277.jpg&ehk=Iyca6bW%2fjNGgsWEdUnbvIVOw0%2fd6JP13Nyjj5w1Ssvk%3d&risl=&pid=ImgRaw&r=0",
+        price:"130",
+        summary:"Cake doughnuts are made from a stiff batter. The ingredients are mixed gently, and the batter is allowed to rest 15 min so that it is fully hydrated. The batter is then transferred to a hopper, from which it is deposited in the appropriate form directly into a fryer. The doughnuts are then cooled and coated with powdered sugar, icing, or other flavoring agents.",
+    },
+    {
+        name:"Ice Cream",
+        image:"https://th.bing.com/th/id/R.981d32e9640c7e6b669cb75e8e397cc3?rik=XgyBYtvXp3sg8w&riu=http%3a%2f%2fwallpapersdsc.net%2fwp-content%2fuploads%2f2016%2f09%2fIce-cream-Wallpapers-HD.jpg&ehk=Ucn1hfnjrn%2fxh083VER09A5XmeJBYaRzFBn6Emp5klE%3d&risl=1&pid=ImgRaw&r=0",
+        price:"230",
+        summary:" a sweetened frozen food typically eaten as a snack or dessert. It may be made from milk or cream and is flavoured with a sweetener, either sugar or an alternative, and a spice, such as cocoa or vanilla, or with fruit such as strawberries or peaches",
+    },
+    {
+        name:"French Fries",
+        image:"https://realhealthyrecipes.com/uploads/images/2016-11-29/507850252/1808423881large.png",
+        price:"100",
+        summary:" french-fried potatoes, or simply fries, are batonnet or allumette-cut deep-fried potatoes, disputed origin from Belgium and France. They are prepared by cutting potatoes into even strips, drying them, and frying them, usually in a deep fryer.",
+    },
+    {
+        name:"Chole Bhature",
+        image:"https://www.utkaltoday.com/wp-content/uploads/2021/01/Chole-Bhature-808x1024.jpg",
+        price:"120",
+        summary:"These are fluffy deep fried Indian breads served with chole which are chickepeas cooked in a spicy masala. The refined flour dough for the bhature needs to be left to ferment for a few hours before being rolled into oval shaped discs and deep-fried.",
+    },
+    {
+        name:"Pav Bhaji",
+        image:"https://www.elgiultra.com/ultraliving/wp-content/uploads/2019/10/pav-bhaji.jpg",
+        price:"150",
+        summary:"Pav bhaji is a spiced mixture of mashed vegetables in a thick gravy served with bread. Vegetables in the curry may commonly include potatoes, onions, carrots, chillies, peas, bell peppers and tomatoes. ",
+    },
+    {
+        name:"Masala Dosa",
+        image:"https://th.bing.com/th/id/OIP.Qr-7P4QpfG6TOAHf-wMlEwHaJu?pid=ImgDet&rs=1",
+        price:"180",
+        summary:"A dosa is a thin batter-based dish (usually crispy) originating from South India, made from a fermented batter predominantly consisting of lentils and rice.",
+    },
+    {
+        name:"Idli Sambar",
+        image:"https://foodhistoria.com/wp-content/uploads/2020/09/099000895e9a53b62d85c46c4d0d62e4_thumb_1200.jpg",
+        price:"140",
+        summary:" Idli Sambar is a South Indian breakfast meal where soft fluffy steamed cakes known as idli are served with sambar, a vegetable lentil stew.",
+    },
+    {
+        name:"Daal Bati",
+        image:"https://myudaipurcity.com/wp-content/uploads/2018/03/daal-baati-churma.jpg",
+        price:"170",
+        summary:"Dal baati is an Indian dish of dal (lentils) and baati (hard wheat rolls).",
+    },
+    {
+        name:"Rasgulla",
+        image:"https://th.bing.com/th/id/OIP.JMhyUgUpx490raI3BV7z9gHaLG?pid=ImgDet&rs=1",
+        price:"260",
+        summary:" It is made from ball-shaped dumplings of chhena (an Indian cottage cheese) and semolina dough, cooked in light sugar syrup made of sugar.",
+    },
+]
