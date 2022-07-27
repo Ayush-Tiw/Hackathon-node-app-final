@@ -149,16 +149,15 @@ app.post("/users/signup",async function(request,response){
 
   
 })
-
-app.get("users/signup",async function(request,response){
+// get all users
+app.get("/users/signup", async function (request, response) {
   const result = await client
     .db("hackathon-node-app")
     .collection("users")
     .find({})
     .toArray();
   response.send(result);
-  
-})
+});
 
 // login
 app.post("/users/login",async function(request,response){
