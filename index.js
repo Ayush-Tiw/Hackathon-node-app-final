@@ -123,27 +123,27 @@ app.get("users/signup",async function(request,response){
 })
 
 // login
-// app.post("/users/login",async function(request,response){
-// const {username,password}=request.body;
+app.post("/users/login",async function(request,response){
+const {username,password}=request.body;
 
-// const userFromDB=await getUserByName(username)
-// console.log(userFromDB)
+const userFromDB=await getUserByName(username)
+console.log(userFromDB)
 
-// if(!userFromDB){
-//   response.status(401).send({message:"User does not exist"})
-// }else{
-//   const storePassword=userFromDB.password;
-//   const isPasswordMatches=await bcrypt.compare(password,storePassword)
-//   // console.log(isPasswordMatches)
-//   if(isPasswordMatches){
-// const token=jwt.sign({id:userFromDB._id},
-//   process.env.SECRET_KEY)
-//   response.send({message:"successufll login",token:token})
+if(!userFromDB){
+  response.status(401).send({message:"User does not exist"})
+}else{
+  const storePassword=userFromDB.password;
+  const isPasswordMatches=await bcrypt.compare(password,storePassword)
+  // console.log(isPasswordMatches)
+  if(isPasswordMatches){
+const token=jwt.sign({id:userFromDB._id},
+  process.env.SECRET_KEY)
+  response.send({message:"successufll login",token:token})
 
-//   }else{
-//     response.status(401).send({message:"invalid credentials"})
-//   }
-// }
-// })
+  }else{
+    response.status(401).send({message:"invalid credentials"})
+  }
+}
+})
 
 app.listen(PORT, console.log(`app started in port ${PORT}`));
