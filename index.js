@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
+import cors from "cors";
 
 
 
@@ -13,7 +14,10 @@ const PORT =process.env.PORT
 
 app.use(express.json());
 
+
 const mongo_URL = process.env.MONGO_URL;
+app.use(cors())
+
 
 // function to connect to mongodb
 async function createConnection() {
@@ -92,7 +96,7 @@ app.post("/users/signup",async function(request,response){
       password:hashedPassword
     }
     const result=client.db("hackathon-node-app").collection("users").insertOne(data)
-    response.send(result,{message:"Registered successfully"})
+    response.send(result)
   }
 
   
