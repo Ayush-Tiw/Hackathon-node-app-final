@@ -29,6 +29,11 @@ async function createConnection() {
 
 export const client = await createConnection();
 
+// welcome app
+app.get("/",function(reques,response){
+  response.send({message:"this is welcome page"})
+})
+
 //food/:id
 app.get("/foods/:id", async function (request, response) {
   const { id } = request.params;
