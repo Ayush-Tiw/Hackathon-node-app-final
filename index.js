@@ -112,15 +112,15 @@ app.post("/users/signup",async function(request,response){
   
 })
 
-// app.get("users/signup",async function(request,response){
-//   const result = await client
-//     .db("hackathon-node-app")
-//     .collection("foods")
-//     .find({})
-//     .toArray();
-//   response.send(result);
+app.get("users/signup",async function(request,response){
+  const result = await client
+    .db("hackathon-node-app")
+    .collection("users")
+    .find({})
+    .toArray();
+  response.send(result);
   
-// })
+})
 
 // login
 // app.post("/users/login",async function(request,response){
