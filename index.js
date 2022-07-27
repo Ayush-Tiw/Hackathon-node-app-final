@@ -136,9 +136,10 @@ if(!userFromDB){
   const isPasswordMatches=await bcrypt.compare(password,storePassword)
   // console.log(isPasswordMatches)
   if(isPasswordMatches){
-const token=jwt.sign({id:userFromDB._id},
-  process.env.SECRET_KEY)
-  response.send({message:"successufll login",token:token})
+// const token=jwt.sign({id:userFromDB._id},
+//   process.env.SECRET_KEY)
+//   console.log(process.env.SECRET_KEY)
+  response.send({message:"successufll login"})
 
   }else{
     response.status(401).send({message:"invalid credentials"})
