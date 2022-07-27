@@ -67,6 +67,18 @@ app.get("/foods", async function (request, response) {
 });
 
 
+// create restaurant list
+app.post("/restaurants", async function (request, response) {
+  const data = request.body;
+  console.log(data);
+
+  const result = await client
+    .db("hackathon-node-app")
+    .collection("restaurants")
+    .insertMany(data);
+  response.send(result);
+});
+
 // signup
 async function genHashedPassword(password){
   const NO_OF_ROUNDS = 10;
