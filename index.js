@@ -107,6 +107,7 @@ app.post("/users/signup",async function(request,response){
     }
     const result=client.db("hackathon-node-app").collection("users").insertOne(data)
     response.send(result)
+    response.send({message:"registered successfully"})
   }
 
   
