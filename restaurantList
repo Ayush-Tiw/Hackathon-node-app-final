@@ -1,0 +1,67 @@
+[
+  {"id":"200",
+    "name": "Burger King",
+    "image": "https://th.bing.com/th/id/R.63fd2fb897e2be052f18f0e4d2aeae90?rik=LkXVO5j%2fFYU4tw&riu=http%3a%2f%2fwww.frogpondvillage.com%2fwp-content%2fuploads%2f2019%2f06%2f155.jpg&ehk=JZmlD1dxG3D7bHojY3SwgkWW3WC8jKL%2b0G2HRBL2vaM%3d&risl=&pid=ImgRaw&r=0",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"201",
+    "name": "Hotel Sai Krishna",
+    "image": "https://2.bp.blogspot.com/-2TCHrl-P6Vs/WMSgDentgRI/AAAAAAAAMd4/kbTt7_9_ZWYMgP4abJfTKeix1rMWXWvHgCLcB/s640/Joanne%2BTrattoria%2BMonstrously%2BGood%2BSauce%2BJesse%2BBluma%2BPointe%2BViven%2BZomato%2BReview%2BNew%2BYork%2BLady%2BGaga%2BGermanotta%2BFamily%2BADolan-.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"202",
+    "name": "Pizza Hut",
+    "image": "https://www.ethylsnyc.com/wp-content/uploads/2021/05/Information-about-restaurant-interior-designers.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"203",
+    "name": "Hotel Platinum",
+    "image": "https://media.architecturaldigest.in/wp-content/uploads/2018/11/Thangabali-bandra-Mumbai.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"204",
+    "name": " Ocean cafe & Restaurant",
+    "image": "https://media.blogto.com/articles/20160815-2048-Lageez1.jpg?cmd=resize_then_crop&quality=70&w=2048&height=1365",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"205",
+    "name": "Shriji Restaurant",
+    "image": "https://i.pinimg.com/originals/43/66/57/4366571b7fa561754dd0e9963b1ddf9e.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"206",
+    "name": "Ranjit Restaurant",
+    "image": "https://static.cms.yp.ca/ecms/media/1/LAbattoir-Exterior-2-1-1467841445-700x500.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"207",
+    "name": "Neelam Sweet Centre",
+    "image": "https://live.staticflickr.com/4028/4433296340_837d441a3d_b.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"208",
+    "name": "GuruKripa Palace",
+    "image": "https://i.pinimg.com/originals/88/c8/7f/88c87f35b8fca6a0c209e3eda0736b5a.png",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"209",
+    "name": "Sai Darshan Restaurant",
+    "image": "https://thesmartlocal.com/philippines/wp-content/uploads/2021/04/image8-11.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  },
+  {
+    "id":"210",
+    "name": "Narmada Foods",
+    "image": "https://static2.tripoto.com/media/filter/nl/img/125536/TripDocument/1553945652_img_1189_1.jpg",
+    "summary": "Donut,Pizza,Masala Dosa,Burger,Rasgulla,Daal Bati,Pav Bhaji,Itli Sambar,Hot Dog"
+  }
+]
