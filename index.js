@@ -79,6 +79,31 @@ app.post("/restaurants", async function (request, response) {
   response.send(result);
 });
 
+// get all restaurants
+app.get("/restaurants", async function (request, response) {
+  const result = await client
+    .db("hackathon-node-app")
+    .collection("restaurants")
+    .find({})
+    .toArray();
+  response.send(result);
+});
+
+// get restaurant by id
+app.get("/restaurants/:id", async function (request, response) {
+  const { id } = request.params;
+  const food = await client
+    .db("hackathon-node-app")
+    .collection("restaurants")
+    .findOne({ id: id });
+  food
+    ? response.send(food)
+    : response.status(404).send({ msg: "restaurant not found" });
+});
+
+
+
+
 // signup
 async function genHashedPassword(password){
   const NO_OF_ROUNDS = 10;
