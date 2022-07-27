@@ -86,9 +86,12 @@ app.post("/users/signup",async function(request,response){
 
   if(userFromDB){
     response.status(400).send({message:"username already exist"})
-  }else if(password.length<8){
-    response.status(400).send({message:"password should be min 8 character"})
-  }else{
+    console.log(response.body)
+  }
+  // else if(password.length<8){
+  //   response.status(400).send({message:"password should be min 8 character"})
+  // }
+  else{
     const hashedPassword=await genHashedPassword(password)
     console.log(hashedPassword)
     const data={
