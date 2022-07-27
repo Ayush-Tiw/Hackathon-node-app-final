@@ -77,7 +77,7 @@ async function getUserByName(username){
 app.post("/users/signup",async function(request,response){
   // const data=request.body;
   // console.log(data)
-  const {username,password}=request.body;
+  const {username,password,email,mobNumber}=request.body;
 
  
 
@@ -93,6 +93,8 @@ app.post("/users/signup",async function(request,response){
     console.log(hashedPassword)
     const data={
       username:username,
+      email:email,
+      mobNumber:mobNumber, 
       password:hashedPassword
     }
     const result=client.db("hackathon-node-app").collection("users").insertOne(data)
