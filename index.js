@@ -67,50 +67,50 @@ app.get("/foods", async function (request, response) {
 });
 
 
-// // signup
-// async function genHashedPassword(password){
-//   const NO_OF_ROUNDS = 10;
-//   const salt= await bcrypt.genSalt(NO_OF_ROUNDS);
-//   const hashedPassword=await bcrypt.hash(password,salt)
-//   // console.log(password,salt)
-//   return hashedPassword;
-// }
-// async function getUserByName(username){
-//   return await client.db("hackathon-node-app").collection("users").findOne({username:username})
-// }
+// signup
+async function genHashedPassword(password){
+  const NO_OF_ROUNDS = 10;
+  const salt= await bcrypt.genSalt(NO_OF_ROUNDS);
+  const hashedPassword=await bcrypt.hash(password,salt)
+  // console.log(password,salt)
+  return hashedPassword;
+}
+async function getUserByName(username){
+  return await client.db("hackathon-node-app").collection("users").findOne({username:username})
+}
 
-// app.post("/users/signup",async function(request,response){
-//   // const data=request.body;
-//   // console.log(data)
-//   const {username,password,email,mobNumber}=request.body;
+app.post("/users/signup",async function(request,response){
+  // const data=request.body;
+  // console.log(data)
+  const {username,password,email,mobNumber}=request.body;
 
  
 
-//   const userFromDB=await getUserByName(username);
-//   console.log(userFromDB)
+  const userFromDB=await getUserByName(username);
+  console.log(userFromDB)
 
-//   if(userFromDB){
-//     response.status(400).send({message:"username already exist"})
-//     console.log(response.body)
-//   }
-//   // else if(password.length<8){
-//   //   response.status(400).send({message:"password should be min 8 character"})
-//   // }
-//   else{
-//     const hashedPassword=await genHashedPassword(password)
-//     console.log(hashedPassword)
-//     const data={
-//       username:username,
-//       email:email,
-//       mobNumber:mobNumber, 
-//       password:hashedPassword
-//     }
-//     const result=client.db("hackathon-node-app").collection("users").insertOne(data)
-//     response.send(result)
-//   }
+  if(userFromDB){
+    response.status(400).send({message:"username already exist"})
+    console.log(response.body)
+  }
+  // else if(password.length<8){
+  //   response.status(400).send({message:"password should be min 8 character"})
+  // }
+  else{
+    const hashedPassword=await genHashedPassword(password)
+    console.log(hashedPassword)
+    const data={
+      username:username,
+      email:email,
+      mobNumber:mobNumber, 
+      password:hashedPassword
+    }
+    const result=client.db("hackathon-node-app").collection("users").insertOne(data)
+    response.send(result)
+  }
 
   
-// })
+})
 
 // app.get("users/signup",async function(request,response){
 //   const result = await client
