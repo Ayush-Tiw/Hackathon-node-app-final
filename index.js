@@ -8,7 +8,9 @@ import Stripe from 'stripe';
 const stripe = new Stripe('pk_test_51LUTLESGF1FrCVyXlctlwjhduHJV4yykGSQbY0L3UyHI142XPzC49rCEazVh0Y5wQLFejrh9pWWx3UZ73rb7zWPs00DnTjsKay');
 
 import { v4 as uuidv4 } from 'uuid';
-uuidv4()
+uuidv4();
+
+import fileupload from "express-fileupload"
 
 
 
@@ -18,6 +20,7 @@ console.log(process.env.PORT)
 const PORT =process.env.PORT
 
 app.use(express.json());
+app.use(fileupload())
 
 
 const mongo_URL = process.env.MONGO_URL;
@@ -61,7 +64,8 @@ app.post("/foods", async function (request, response) {
     .db("hackathon-node-app")
     .collection("foods")
     .insertOne(data);
-  response.send(result);
+    result ?  response.send(result) :response.send({message:"data not correctly uploaded"})
+ 
   console.log(result)
 });
 // get all foods
@@ -122,6 +126,17 @@ app.put("/foods/:id",async function (request, response) {
   response.send(result);
 })
 
+// search food by name
+app.get("/foods/:name",async function (request, response) {
+  const {name}=request.params;
+  console.log(request.params,name)
+  const result = await client
+    .db("hackathon-node-app")
+    .collection("foods")
+    .findOne({name: name})
+  response.send(result);
+})
+
 
 // create restaurant list
 app.post("/restaurants", async function (request, response) {
@@ -160,26 +175,34 @@ app.get("/restaurants/:id", async function (request, response) {
 
 // // create items in cart 
 
-async function getItemByName(name){
-  return await client.db("hackathon-node-app").collection("cart").findOne({name:name})
+async function getItemByUserId(userId,name){
+  return await client.db("hackathon-node-app").collection("cart").findOne({
+    $and:[
+    {name:name},
+    {userId:userId}
+    ]
+  })
 }
 
 app.post("/cart", async function (request, response) {
   
-  const {name,image,price,quantity}=request.body;
-  const itemFromDB=await getItemByName(name);
+  const {name,image,price,quantity,userId}=request.body;
+  const itemFromDB=await getItemByUserId(name,userId);
   console.log(itemFromDB)
 
   if(itemFromDB){
     response.status(400).send({message:"item already exist"})
-    console.log(response.body)
+    console.log(response.message)
   }else{
     const data={
       name:name,
       image:image,
       price:price,
-      quantity:quantity
+      quantity:quantity,
+      userId:(userId)
+
     }
+    console.log(data)
     const result = await client
     .db("hackathon-node-app")
     .collection("cart")
@@ -187,6 +210,7 @@ app.post("/cart", async function (request, response) {
   response.send(result);
   // response.send({message:"item added successfully"})
   // console.log(request.body)
+  console.log(result)
   
   }
 
@@ -279,12 +303,23 @@ app.get("/users", async function (request, response) {
 });
 
 // get user by id
-app.get("/user/:email",async function(request,response){
-  const{email}=request.params;
-  const result=await client.db("hackathon-node-app").collection("users").findOne({email:email})
+app.get("/user/:id",async function(request,response){
+  const{id}=request.params;
+  const result=await client.db("hackathon-node-app").collection("users").findOne({_id:ObjectId(id)})
   console.log(result)
   response.send(result)
   
+})
+// edit user profile by id
+app.put("/user/:id",async function (request, response) {
+  const {id}=request.params;
+  console.log(request.params,id)
+  const data=request.body;
+  const result = await client
+    .db("hackathon-node-app")
+    .collection("users")
+    .updateOne({_id: ObjectId(id)},{$set:data})
+  response.send(result);
 })
 
 // delete user by _id
@@ -341,54 +376,54 @@ app.get("/user/:email", async function (request, response) {
 })
 
 // create orders list
-app.post("/orders",async function(request,response){
-console.log(request)
-  console.log("Request:",request.body)
-  const {token,product}=request.body;
+// app.post("/orders",async function(request,response){
+// console.log(request)
+//   console.log("Request:",request.body)
+//   const {token,product}=request.body;
 
-  let error,status;
+//   let error,status;
 
 
-    console.log(token)
-    const customer = await stripe.customers.create({
+//     console.log(token)
+//     const customer = await stripe.customers.create({
       
-      email:token.email,
-      source:token.id
-    })
-    const key=uuid()
+//       email:token.email,
+//       source:token.id
+//     })
+//     const key=uuid()
 
-    const charge=await stripe.charges.create(
-      {
-        amount:product.price*100,
-        currency:"INR",
-        customer:customer.id,
-        receipt_email:token.email,
-        description:"purchased food",
-        shipping:{
-          name:token.card.name,
-          address:{
-            line1:token.card.address_line1,
-            line2:token.address_line,
-            city:token.card.address_city,
-            country:token.card.address_zip,
+//     const charge=await stripe.charges.create(
+//       {
+//         amount:product.price*100,
+//         currency:"INR",
+//         customer:customer.id,
+//         receipt_email:token.email,
+//         description:"purchased food",
+//         shipping:{
+//           name:token.card.name,
+//           address:{
+//             line1:token.card.address_line1,
+//             line2:token.address_line,
+//             city:token.card.address_city,
+//             country:token.card.address_zip,
 
-          }
-        }
-      },
-      {
-        key,
-      }
-    );
-    console.log("charge:",{charge});
-    status="success"
+//           }
+//         }
+//       },
+//       {
+//         key,
+//       }
+//     );
+//     console.log("charge:",{charge});
+//     status="success"
  
-  response.json({error,status})
+//   response.json({error,status})
  
   
-  // const result=await client.db("hackathon-node-app").collection("orders").insertOne(data);
-  // response.send(result)
-  // console.log(request.body)
-})
+//   // const result=await client.db("hackathon-node-app").collection("orders").insertOne(data);
+//   // response.send(result)
+//   // console.log(request.body)
+// })
 
 
 
