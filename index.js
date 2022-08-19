@@ -24,7 +24,17 @@ app.use(fileupload())
 
 
 const mongo_URL = process.env.MONGO_URL;
-app.use(cors())
+
+app.use(cors({
+  origin:"*",
+  methods:["GET","PUT","POST","DELETE","OPTIONS"]
+  
+}))
+
+app.use(function (res,req,next){
+  req.header("Access-control-Allow-Origin","*");
+next()
+})
 
 
 // function to connect to mongodb
@@ -39,7 +49,7 @@ export const client = await createConnection();
 
 // welcome app
 app.get("/",function(request,response){
-  response.send({message:"this is welcome page"})
+  response.send({message:"this is welcome page ,This is CORS-enabled for all origins!"})
 })
 
 //food/:id
