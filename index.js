@@ -132,7 +132,7 @@ app.put("/foods/:id",async function (request, response) {
   const result = await client
     .db("hackathon-node-app")
     .collection("foods")
-    .updateOne({_id: objectId(id)},{$set:data})
+    .updateOne({_id: ObjectId(id)},{$set:data})
   response.send(result);
 })
 
@@ -388,47 +388,12 @@ app.get("/user/:email", async function (request, response) {
 // create orders list
 // app.post("/orders",async function(request,response){
 // console.log(request)
+ 
+//   const {token}=request.body;
+  
 //   console.log("Request:",request.body)
-//   const {token,product}=request.body;
-
-//   let error,status;
-
-
-//     console.log(token)
-//     const customer = await stripe.customers.create({
-      
-//       email:token.email,
-//       source:token.id
-//     })
-//     const key=uuid()
-
-//     const charge=await stripe.charges.create(
-//       {
-//         amount:product.price*100,
-//         currency:"INR",
-//         customer:customer.id,
-//         receipt_email:token.email,
-//         description:"purchased food",
-//         shipping:{
-//           name:token.card.name,
-//           address:{
-//             line1:token.card.address_line1,
-//             line2:token.address_line,
-//             city:token.card.address_city,
-//             country:token.card.address_zip,
-
-//           }
-//         }
-//       },
-//       {
-//         key,
-//       }
-//     );
-//     console.log("charge:",{charge});
-//     status="success"
- 
-//   response.json({error,status})
- 
+//   console.log(token)
+//   console.log(product)
   
 //   // const result=await client.db("hackathon-node-app").collection("orders").insertOne(data);
 //   // response.send(result)
@@ -450,7 +415,7 @@ app.post("/admin",async function(request,response){
     }
     const result=client.db("hackathon-node-app").collection("admin").insertOne(data)
     response.send(result)
-    // response.send({message:"registered successfully"})
+    
   
 console.log(request.body)
   
