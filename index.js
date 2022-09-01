@@ -379,17 +379,12 @@ console.log("product",product);
 console.log("price",product.price);
 console.log(token)
 console.log(userId)
-
-
-
-
 const data={
   userId:userId,
   address:token.card.address_line1,
   addressCity:token.card.address_city,
   price:product.price,
   
-
 }
 console.log(data)
 const result = await client
