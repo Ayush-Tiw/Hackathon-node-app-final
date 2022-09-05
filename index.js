@@ -5,8 +5,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
 import cors from "cors";
 import Stripe from 'stripe';
-import {auth} from "./middleware/auth.js"
-import {adminAuth} from "./middleware/adminAuth.js"
+// import {auth} from "./middleware/auth.js"
+// import {adminAuth} from "./middleware/adminAuth.js"
 const stripe = new Stripe('sk_test_51LUTLESGF1FrCVyXfcqAb9tWYSEm6Sg40rEfNPA0eHhW2AHupepjRcoVSFsFEHsOSolnpsGcgC8mS8JoBl3qepJ700rRwHjugT');
 
 import { v4 as uuidv4 } from 'uuid';
@@ -128,17 +128,7 @@ app.put("/foods/:id",async function (request, response) {
   response.send(result);
 })
 
-// // update food quantityby id
-// app.put("/foods/:id",async function (request, response) {
-//   const {id}=request.params;
-//   console.log(request.params,id)
-//   const data=request.body;
-//   const result = await client
-//     .db("hackathon-node-app")
-//     .collection("foods")
-//     .updateOne({_id: ObjectId(id)},{$set:data})
-//   response.send(result);
-// })
+
 
 
 // ---------RESTAURANT---------------
@@ -181,10 +171,26 @@ app.get("/restaurants/:id", async function (request, response) {
 // -----------CART-----------------
 
  // create items in cart 
+
+  async function getexistingProduct(name,userId){
+   return await client.db("hackathon-node-app").collection("cart").findOne({
+    $and:[
+      {userId:userId},
+      {name:name}
+      
+   ]
+    })
+  }
 app.post("/cart", async function (request, response) {
   
   const {name,image,price,quantity,userId}=request.body;
-
+console.log(name)
+  // const productFromDB=getexistingProduct(name,userId)
+// console.log(productFromDB)
+  // if(productFromDB){
+  //   response.send({message:"product already added to cart"})
+  //   console.log(response.message)
+  // }else{
 
     const data={
       name:name,
@@ -203,7 +209,8 @@ app.post("/cart", async function (request, response) {
   // response.send({message:"item added successfully"})
   // console.log(request.body)
   console.log(result)
-  
+
+  // }
   
 
   
@@ -358,19 +365,7 @@ const token=jwt.sign({id:userFromDB._id},
 }
 })
 
-// ----------------USER PROFILE--------------
 
-// user profile
-// app.get("/user/:email", async function (request, response) {
-//   const {email}=request.params;
-//   const result = await client
-//     .db("hackathon-node-app")
-//     .collection("users")
-//     .find({email:email})
-//     .toArray();
-//     result ?response.send(result): response.status(404).send({message:"user not available"})
-//   console.log(result)
-// })
 
 // create orders list
 app.post("/payment",async function(request,response){
@@ -477,9 +472,10 @@ app.post("/admin/login",async function(request,response){
   const adminToken=jwt.sign({id:adminFromDB._id},
     process.env.SECRET_KEY)
     console.log(process.env.SECRET_KEY)
-    response.send({message:"succesfull login",token:adminToken,
+    response.send({message:"succesfull login",
+    // token:adminToken,
     })
-     console.log(token,adminFromDB)
+     console.log(adminToken,adminFromDB)
   
     }else{
       response.status(401).send({message:"invalid credentials"})
