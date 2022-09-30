@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
 import cors from "cors";
 import Stripe from 'stripe';
-// import {auth} from "./middleware/auth.js"
+import {auth} from "./middleware/auth.js"
 // import {adminAuth} from "./middleware/adminAuth.js"
 const stripe = new Stripe('sk_test_51LUTLESGF1FrCVyXfcqAb9tWYSEm6Sg40rEfNPA0eHhW2AHupepjRcoVSFsFEHsOSolnpsGcgC8mS8JoBl3qepJ700rRwHjugT');
 
@@ -33,10 +33,7 @@ app.use(cors({
   
 }))
 
-// app.use(function (res,req,next){
-//   req.header("Access-control-Allow-Origin","*");
-// next()
-// })
+
 
 
 // function to connect to mongodb
@@ -228,7 +225,7 @@ response.send(result);
 })
 
 // delete cart item by id
-app.delete("/cart/:id",async function(request,response){
+app.delete("/cart/:id",auth,async function(request,response){
   const {id}=request.params;
   console.log(request.params,id)
   const result= await client .db("hackathon-node-app")
