@@ -198,7 +198,7 @@ app.get("/cart", async function (request, response) {
 });
 
 // delete cart item by id
-app.delete("/cart/:id", auth, async function (request, response) {
+app.delete("/cart/:id", async function (request, response) {
   const { id } = request.params;
   console.log(request.params, id);
   const result = await client
